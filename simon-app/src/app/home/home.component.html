@@ -1,9 +1,10 @@
-<button (click)='addSequence()'>Start</button><br><br>
+<div class="columns is-mobile">
+    <div class="column is-half is-offset-one-quarter">
+        <button class="button is-primary" (click)='addSequence()'>Start</button><br><br>
 
-<button (click)='checkSequence("red")'>Red</button>
-<button (click)='checkSequence("blue")'>blue</button>
-<button (click)='checkSequence("green")'>green</button>
-<button (click)='checkSequence("yellow")'>yellow</button>
-
-
-
+        <button  class="button is-link" (click)='checkSequence("red")'>Red</button>
+        <button class="button is-info" (click)='checkSequence("blue")'>blue</button>
+        <button class="button is-success" (click)='checkSequence("green")'>green</button>
+        <button class="button is-warning" (click)='checkSequence("yellow")'>yellow</button>
+    </div>
+</div>
