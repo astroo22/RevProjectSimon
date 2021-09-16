@@ -4,12 +4,12 @@
 
         <div class="buttons are-large block">
             
-            <button class="button is-danger" (click)='checkSequence("red")' id="red">
+            <button class="button" [ngClass]="statusRed ? 'is-black' : 'is-danger'" (click)='checkSequence("red")' id="red">
                 <span class="icon is-large">
                     <i class="fas fa-jedi is-large"></i>
                   </span>
             </button>
-            <button class="button is-info" (click)='checkSequence("blue")' id="blue">
+            <button class="button" [ngClass]="statusBlue ? 'is-black' : 'is-info'" (click)='checkSequence("blue")' id="blue">
                 <span class="icon is-large">
                     <i class="fab fa-old-republic"></i>
                   </span>
@@ -19,12 +19,12 @@
 
         <div class="buttons are-large block">
 
-            <button class="button is-success" (click)='checkSequence("green")' id="green">
+            <button class="button" [ngClass]="statusGreen ? 'is-black' : 'is-success'" (click)='checkSequence("green")' id="green">
                 <span class="icon is-large">
                     <i class="fab fa-galactic-senate"></i>
                   </span>
             </button>
-            <button class="button is-warning" (click)='checkSequence("yellow")' id="yellow">
+            <button class="button" [ngClass]="statusYellow ? 'is-black' : 'is-warning'" (click)='checkSequence("yellow")' id="yellow">
                 <span class="icon is-large">
                     <i class="fab fa-galactic-republic"></i>
                   </span>

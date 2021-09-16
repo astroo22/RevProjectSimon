@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { waitForAsync } from '@angular/core/testing';
+
 
 @Component({
   selector: 'app-home',
@@ -20,6 +22,10 @@ export class HomeComponent implements OnInit {
   sound3url:string = "../sounds/oof.mp3";
   sound4url:string = "../sounds/pew-pew-lame-sound-effect.mp3";
   sound5url:string = "../sounds/yeet.mp3";
+  statusRed: boolean = false;
+  statusBlue: boolean = false;
+  statusGreen: boolean = false;
+  statusYellow: boolean = false;
 
   constructor() {}
 
@@ -27,9 +33,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  setInterval(function() {
-    new Audio(this.sound1url).play();
-  }, 17000);
+ 
 
 
   randomNumber(): number{
@@ -37,9 +41,41 @@ export class HomeComponent implements OnInit {
     
   }
 
-  delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
+  
+
+  flash(color: string){
+    
+    switch (color) {
+      case "red":
+        this.statusRed = true;      
+      setTimeout(()=>{
+        this.statusRed = false;
+      }, 1000);
+        break;
+      case "blue":
+        this.statusBlue = true;      
+      setTimeout(()=>{
+        this.statusBlue = false;
+      }, 1000);
+        break;
+        case "green":
+        this.statusGreen = true;      
+      setTimeout(()=>{
+        this.statusGreen = false;
+      }, 1000);
+        break;
+        case "yellow":
+        this.statusYellow = true;      
+      setTimeout(()=>{
+        this.statusYellow = false;
+      }, 1000);
+        break;
+      default:
+        break;
+    }
+
+    
+  }
 
   addSequence():void{
 
@@ -47,30 +83,43 @@ export class HomeComponent implements OnInit {
 
     if(temp < 2){
       this.sequence.push("red");
-      document.getElementById("red")?.setAttribute('class', 'button is-black');
-      
-      this.delay(2000);
-      document.getElementById("red")?.setAttribute('class', 'button is-danger');
+      this.statusRed = true;      
+      setTimeout(()=>{
+        this.statusRed = false;
+      }, 1000);
 
     }else if(temp < 4){
       this.sequence.push("blue");
-      document.getElementById("blue")?.setAttribute('class', 'button is-black');      
-      this.delay(2000);
-      document.getElementById("blue")?.setAttribute('class', 'button is-info');
+      this.statusBlue = true;      
+      setTimeout(()=>{
+        this.statusBlue = false;
+      }, 1000);
     }else if(temp < 6){
       this.sequence.push("green");
-      document.getElementById("green")?.setAttribute('class', 'button is-black');      
-      this.delay(2000);
-      document.getElementById("green")?.setAttribute('class', 'button is-success');
+      this.statusGreen = true;      
+      setTimeout(()=>{
+        this.statusGreen = false;
+      }, 1000);
     }else{
       this.sequence.push("yellow");
-      document.getElementById("yellow")?.setAttribute('class', 'button is-black');      
-      this.delay(2000);
-      document.getElementById("yellow")?.setAttribute('class', 'button is-warning');
+      this.statusYellow = true;      
+      setTimeout(()=>{
+        this.statusYellow = false;
+      }, 1000);
+    }
+
+    for (let i = 0; i < this.sequence.length; i++) {      
+        
+          this.flash(this.sequence[i].toString()); 
+               
     }
 
     console.log(this.sequence);
     console.log(temp);
+   
+
+    
+
   }
 
   checkSequence(a:string):void{
@@ -82,10 +131,13 @@ export class HomeComponent implements OnInit {
         this.tempCounter++;
         if(this.playerSequance.length == this.sequence.length){
           alert("congrats");
+          
           this.playerSequance=[];
           this.tempCounter=0;
           this.addSequence();
+         
         }
+        
       }
     }else{
       console.log(this.sequence[this.tempCounter]);
