@@ -1,10 +1,28 @@
 <div class="columns is-mobile">
-    <div class="column is-half is-offset-one-quarter">
-        <button class="button is-primary" (click)='addSequence()'>Start</button><br><br>
+    <div class="column is-half is-offset-one-quarter block">
+        <button class="button is-primary is-fullwidth" (click)='addSequence()'>Start</button><br><br>
 
-        <button  class="button is-link" (click)='checkSequence("red")'>Red</button>
-        <button class="button is-info" (click)='checkSequence("blue")'>blue</button>
-        <button class="button is-success" (click)='checkSequence("green")'>green</button>
-        <button class="button is-warning" (click)='checkSequence("yellow")'>yellow</button>
+        <div class="buttons are-large block">
+            
+            <button class="button is-danger" (click)='checkSequence("red")'>
+                <img src="../../img/red.png">
+            </button>
+            <button class="button is-info" (click)='checkSequence("blue")'>
+                <img src="../../img/blue.png">
+            </button>
+
+        </div>
+
+        <div class="buttons are-large block">
+
+            <button class="button is-success" (click)='checkSequence("green")'>
+                <img src="../../img/green.png">
+            </button>
+            <button class="button is-warning" (click)='checkSequence("yellow")'>
+                <img src="../../img/yellow.png">
+            </button>
+
+        </div>
+
     </div>
 </div>
