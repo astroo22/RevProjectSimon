@@ -50,25 +50,25 @@ export class HomeComponent implements OnInit {
         this.statusRed = true;      
       setTimeout(()=>{
         this.statusRed = false;
-      }, 1000);
+      }, 500);
         break;
       case "blue":
         this.statusBlue = true;      
       setTimeout(()=>{
         this.statusBlue = false;
-      }, 1000);
+      }, 500);
         break;
         case "green":
         this.statusGreen = true;      
       setTimeout(()=>{
         this.statusGreen = false;
-      }, 1000);
+      }, 500);
         break;
         case "yellow":
         this.statusYellow = true;      
       setTimeout(()=>{
         this.statusYellow = false;
-      }, 1000);
+      }, 500);
         break;
       default:
         break;
@@ -82,43 +82,24 @@ export class HomeComponent implements OnInit {
     let temp = this.randomNumber();
 
     if(temp < 2){
-      this.sequence.push("red");
-      this.statusRed = true;      
-      setTimeout(()=>{
-        this.statusRed = false;
-      }, 1000);
-
+      this.sequence.push("red");  
     }else if(temp < 4){
-      this.sequence.push("blue");
-      this.statusBlue = true;      
-      setTimeout(()=>{
-        this.statusBlue = false;
-      }, 1000);
+      this.sequence.push("blue");   
     }else if(temp < 6){
-      this.sequence.push("green");
-      this.statusGreen = true;      
-      setTimeout(()=>{
-        this.statusGreen = false;
-      }, 1000);
+      this.sequence.push("green");    
     }else{
-      this.sequence.push("yellow");
-      this.statusYellow = true;      
-      setTimeout(()=>{
-        this.statusYellow = false;
-      }, 1000);
+      this.sequence.push("yellow");    
     }
 
     for (let i = 0; i < this.sequence.length; i++) {      
-        
-          this.flash(this.sequence[i].toString()); 
+        setTimeout(()=>{
+          this.flash(this.sequence[i].toString());
+      },1000*i); 
                
     }
 
     console.log(this.sequence);
     console.log(temp);
-   
-
-    
 
   }
 
